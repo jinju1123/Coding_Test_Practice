@@ -16,31 +16,17 @@
 <body>
 	<div class="container" align="center">
 		<div class="mt-4 p-5 bg-primary text-white rounded">
-			<h3>게시판목록</h3>
+			<h3>글목록</h3>
 			<c:if test="${ boardList.isEmpty() }">
 				<h5><p class="bg-danger text-white">등록된 게시판 정보가 존재하지 않습니다!!</p></h5>
 			</c:if>
 		</div> 
-		${searchVO.toString()} <hr>
-		${boardList.toString()}
 		<br>
 			
 		<form action="getBoardList.do" method="post" id="boardForm">   
 			<input type="hidden" id="curPage" name="curPage" value="${searchVO.getCurPage()}"> 
 			<input type="hidden" id="rowSizePerPage" name="rowSizePerPage" value="${searchVO.getRowSizePerPage()}">
 	   		<div class="row mt-3 justify-content-center">
-				<div class="col-auto me-1">
-					<label for="id" class="input-group-text">${searchVO.getCurPage()} of ${searchVO.getTotalRowCount()}</label>
-				</div>
- 		    	<div class="col-auto">
-					<select class="form-select" id="searchCategory" name="searchCategory">
-				    	<option value="">분류</option>							
-				    	<option value="react">React</option>						
-				    	<option value="java">Java</option>							
-				    	<option value="jsp">JSP/Servlet</option>						
-				    	<option value="spring">Spring</option>						
-					</select>
-				</div> 
 		    	<div class="col-auto me-1">
 					<select class="form-select" id="searchType" name="searchType">
 				    	<option value="">검색</option>							
@@ -52,11 +38,9 @@
 				<div class="col-3 me-1">			
 					<input class="form-control me-2" name="searchWord" type="text" placeholder="input search keyword..." />
 				</div>
-				<div class="col-5 btn-group"> 		
-			    	<input type="reset" id="btnReset" class="col-1 btn btn-primary me-2" value="초기화">
-			    	<input type="submit" class="col-1 btn btn-primary me-2" value="Search">
-			    	<a href="board/insertBoard.jsp" class="col-1 btn btn-primary me-2">게시판등록</a>
-					<a href="logout.do" class="col-1 btn btn-primary">logout</a>
+				<div class="col-5 btn-group">
+			    	<input type="submit" class="col-1 btn btn-primary me-2" value="검색">
+			    	<a href="board/insertBoard.jsp" class="col-1 btn btn-primary me-2">글등록</a>
 	        	</div>
 			</div>
 		</form> <!-- getBoardList.do -->
@@ -82,7 +66,7 @@
 							<td>${ board.ubd_readcount }</td>
 							<td align="center">
 							<c:if test="${!empty board.ubd_file}">
-								<a href="download.do?ubd_no=${board.ubd_no}&fn=${board.ubd_file}" class="btn btn-success btn-sm"><i class="fas fa-file-download">${board.ubd_file}</i></a>
+								<a href="download.do?ubd_no=${board.getUbd_no()}&fn=${board.ubd_file}" class="btn btn-success btn-sm"><i class="fas fa-file-download">${board.ubd_file}</i></a>
 							</c:if>
 							</td>
 						</tr>

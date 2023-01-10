@@ -37,8 +37,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public void updateCount(BoardVO board) {
-		boardDAO.updateCount(board);
+	public void updateCount(int ubd_no) {
+		boardDAO.updateCount(ubd_no);
 	}
 
 	@Override

@@ -2,6 +2,9 @@ package com.lec.board.vo;
 
 import java.util.Date;
 
+
+import org.springframework.web.multipart.MultipartFile;
+
 public class BoardVO {
 
 	private int member_no;
@@ -12,8 +15,9 @@ public class BoardVO {
 	private String ubd_content;
 	private int ubd_readcount;
 	private Date ubd_regdate;
-	private String ubd_file;
 	private int ubd_like_cnt;
+	private String ubd_file; 
+	private MultipartFile uploadFile;
 	
 	
 	public int getMember_no() {
@@ -64,12 +68,7 @@ public class BoardVO {
 	public void setUbd_regdate(Date ubd_regdate) {
 		this.ubd_regdate = ubd_regdate;
 	}
-	public String getUbd_file() {
-		return ubd_file;
-	}
-	public void setUbd_file(String ubd_file) {
-		this.ubd_file = ubd_file;
-	}
+
 	public int getUbd_like_cnt() {
 		return ubd_like_cnt;
 	}
@@ -77,6 +76,18 @@ public class BoardVO {
 		this.ubd_like_cnt = ubd_like_cnt;
 	}
 	
+	public String getUbd_file() {
+		return ubd_file;
+	}
+	public void setUbd_file(String ubd_file) {
+		this.ubd_file = ubd_file;
+	}
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
+	}
 	@Override
 	public String toString() {
 		return "[member_no=" + member_no + ", member_nick=" + member_nick + ", ubd_no=" + ubd_no

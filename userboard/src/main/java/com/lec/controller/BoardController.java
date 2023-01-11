@@ -64,7 +64,7 @@ public class BoardController {
 		}	
 		boardService.insertBoard(board);
 		model.addAttribute("msg","글이 정상적으로 등록되었습니다.");
-		model.addAttribute("url","/getBoardList.do"); // ------------------------------------- 여기 에러
+		model.addAttribute("url","getBoardList.do"); // ------------------------------------- 여기 에러
 		return "redirect_insert.jsp";
 	}	
 	

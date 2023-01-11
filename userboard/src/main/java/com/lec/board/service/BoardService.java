@@ -16,5 +16,6 @@ public interface BoardService {
 	int deleteBoard(BoardVO board);
 	int updateBoard(BoardVO board);
 	void updateCount(int ubd_no);
+	void likeCnt(int ubd_no);
 	
 }

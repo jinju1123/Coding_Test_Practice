@@ -21,7 +21,7 @@
 	</div>
 	
 	<div class="container mt-5 justify-content-center">
-		<form action="insertBoard.do" method="post" enctype="multipart/form-data"></form>
+		<form action="insertBoard.do" method="post" enctype="multipart/form-data">
 			<div class="modal-content">				
 				<div class="modal-header bg-primary text-white">
 					<h1 class="motal-title fs-5" id="staticBackdropLabel">글등록하기</h1>
@@ -51,7 +51,7 @@
 					
 				<div class="modal-footer">	
 				<input type="hidden" name="uploadFile" value=""/>
-				    <input type="submit" class="btn btn-primary" value=" 등록 " />
+				    <input type="submit" class="btn btn-primary" value="등록"/>
 				    <button type="button" class="btn btn-primary" onclick="history.go(-1)">취소</button>					
 				</div> 
 			</div> 

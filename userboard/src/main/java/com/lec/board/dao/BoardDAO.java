@@ -31,10 +31,12 @@ public class BoardDAO {
 	private String selectBoardListByMemberNick = "select * from bdtest where 1=1 and member_nick like ? order by ubd_no desc limit ?, ?";
 	private String selectBoardListByUbdContent = "select * from bdtest where 1=1 and ubd_content like ? order by ubd_no desc limit ?, ?";
 	private String boardTotalRowCount = "select count(*) from bdtest where 1=1";
-	private String insertBoard = "insert into bdtest(ubd_dogType, ubd_subject, ubd_content, ubd_file) values(?, ?, ?, ?)";
+	private String insertBoard = "insert into bdtest(ubd_dogType, ubd_subject, ubd_content, ubd_regdate, ubd_file) values(?, ?, ?, now(), ?)";
 	private String updateCount = "update bdtest set ubd_readcount = ubd_readcount + 1 where ubd_no=?";
 	private String updateBoard = "update bdtest set ubd_subject=?, ubd_content=? where ubd_no=?";
-
+	private String deleteBoard = "delete from bdtest where ubd_no=?";
+	private String likeCnt = "update bdtest set ubd_like_cnt = ubd_like_cnt+1 where ubd_no=?";
+	
 	public BoardVO getBoard(BoardVO board) {
 		Object[] args = { board.getUbd_no() };		
 		return (BoardVO) jdbcTemplate.queryForObject(selectByUbdNo, args, new BoardRowMapper());
@@ -46,7 +48,7 @@ public class BoardDAO {
 	}
 
 	public int deleteBoard(BoardVO board) {
-		return 0;
+		return jdbcTemplate.update(deleteBoard, board.getUbd_no());
 	}
 
 	public int updateBoard(BoardVO board) {
@@ -65,11 +67,11 @@ public class BoardDAO {
 			searchVO.setSearchType("ubd_subject");
 		} else {			
 			if(searchVO.getSearchType().equalsIgnoreCase("ubd_subject")) {
-				sql = boardTotalRowCount + " and title like '%" + searchVO.getSearchWord() + "%'";
+				sql = boardTotalRowCount + " and ubd_subject like '%" + searchVO.getSearchWord() + "%'";
 			} else if(searchVO.getSearchType().equalsIgnoreCase("member_nick")) {
-				sql = boardTotalRowCount + " and writer like '%" + searchVO.getSearchWord() + "%'";
+				sql = boardTotalRowCount + " and member_nick like '%" + searchVO.getSearchWord() + "%'";
 			} else if(searchVO.getSearchType().equalsIgnoreCase("ubd_content")) {
-				sql = boardTotalRowCount + " and content like '%" + searchVO.getSearchWord() + "%'";
+				sql = boardTotalRowCount + " and ubd_content like '%" + searchVO.getSearchWord() + "%'";
 			}	
 		}
 		return jdbcTemplate.queryForInt(sql);
@@ -93,6 +95,10 @@ public class BoardDAO {
 		String searchWord = "%" + searchVO.getSearchWord() + "%";					
 		Object[] args = {searchWord, searchVO.getFirstRow(), searchVO.getRowSizePerPage()};
 		return jdbcTemplate.query(sql, args, new BoardRowMapper());
+	}
+
+	public void likeCnt(int ubd_no) {
+		jdbcTemplate.update(likeCnt, ubd_no);
 	}
 	
 	

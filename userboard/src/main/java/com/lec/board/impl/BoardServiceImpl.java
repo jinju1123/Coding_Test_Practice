@@ -51,4 +51,10 @@ public class BoardServiceImpl implements BoardService {
 		return boardDAO.getBoardList(searchVO);
 	}
 
+	@Override
+	public void likeCnt(int ubd_no) {
+		boardDAO.likeCnt(ubd_no);
+		
+	}
+
 }

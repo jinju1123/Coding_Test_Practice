@@ -13,23 +13,13 @@
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>   
 </head>
 <body>
-  <div class="container" align="center">
-		<div class="mt-4 p-5 bg-primary text-white rounded">
-			<h3>게시글 삭제</h3>
-			
-		</div>
-		<br>
-		
-		<form action="deleteBoard.do" method="post">
-			<input type="hidden" name="ubd_no" value="${ board.getUbd_no()}">
-			<input type="hidden" name="curPage" value="${searchVO.getCurPage()}">
-			<input type="hidden" name="rowSizePerPage" value="${searchVO.getRowSizePerPage()}">
-			<input type="hidden" name="searchCategory" value="${searchVO.getSearchCategory()}">
-			<input type="hidden" name="searchType" value="${searchVO.getSearchType()}">
-			<input type="hidden" name="searchWord" value="${searchVO.getSearchWord()}">
-			<button type="submit" class="btn btn-danger text-white"><b>${board.getUbd_no() }. 제목 "${board.getUbd_subject()}"</b>를 삭제하겠습니까?</button>
-			<a href="getBoardList.do" class="btn btn-info text-white ms-3">게시글목록</a>
-		</form>
-	</div>		   
+   <script>
+   var msg = "<c:out value='${msg}'/>";
+   var url = "<c:out value='${url}'/>";
+   alert(msg);
+   location.href=url;
+   </script> 
+
+<h1>넘어가라</h1>
 </body>
 </html>   

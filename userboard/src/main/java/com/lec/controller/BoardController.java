@@ -32,7 +32,7 @@ public class BoardController {
 
 	private String uploadFolder = "";
 	
-	@RequestMapping("getBoardList.do")
+	@RequestMapping("/getBoardList.do")
 	public String getBoardList(Model model, SearchVO searchVO,
 			@RequestParam(defaultValue="1") int curPage,
 			@RequestParam(defaultValue="10") int rowSizePerPage,
@@ -55,7 +55,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping("*/insertBoard.do")
-	public String insertBoard(BoardVO board) throws IOException {
+	public String insertBoard(BoardVO board, Model model) throws IOException {
 		MultipartFile uploadFile = board.getUploadFile();
 		if (!uploadFile.isEmpty()) {
 			String ubd_file = uploadFile.getOriginalFilename();
@@ -63,21 +63,54 @@ public class BoardController {
 			board.setUbd_file(ubd_file);
 		}	
 		boardService.insertBoard(board);
-		return "redirect:/getBoardList.do";
+		model.addAttribute("msg","글이 정상적으로 등록되었습니다.");
+		model.addAttribute("url","/getBoardList.do"); // ------------------------------------- 여기 에러
+		return "redirect_insert.jsp";
 	}	
 	
-	@RequestMapping(value="/updateBoard.do", method=RequestMethod.GET)
-	public String updateBoard(Model model, BoardVO board, SearchVO searchVO, @RequestParam int ubd_no) {
+	@RequestMapping(value="/selectBoardView.do", method=RequestMethod.GET)
+	public String selectBoardView(Model model, BoardVO board, SearchVO searchVO, @RequestParam int ubd_no) {
 		model.addAttribute("searchVO", searchVO);
 		model.addAttribute("board", boardService.getBoard(board));
 		boardService.updateCount(ubd_no);
+		return "board/selectBoardView.jsp";
+	}
+	
+	
+	@RequestMapping(value="/updateBoard.do", method=RequestMethod.GET)
+	public String updateBoard(Model model, BoardVO board, SearchVO searchVO) {
+		model.addAttribute("searchVO", searchVO);
+		model.addAttribute("board", boardService.getBoard(board));
 		return "board/updateBoard.jsp";
 	}
 	
 	@RequestMapping(value="/updateBoard.do", method=RequestMethod.POST)
-	public String updateBoard(BoardVO board) {
+	public String updateBoard(Model model, BoardVO board) {
 		boardService.updateBoard(board);
+		model.addAttribute("msg","글이 정상적으로 수정되었습니다.");
+		model.addAttribute("url","getBoardList.do");
+		return "board/redirect_update.jsp";
+	}	
+	
+	
+	@RequestMapping(value="/deleteBoard.do", method=RequestMethod.GET)
+	public String deleteBoard(Model model, BoardVO board, SearchVO searchVO, @RequestParam int ubd_no) {
+		board.setUbd_no(ubd_no);
+		model.addAttribute("searchVO", searchVO);
+		model.addAttribute("board", boardService.getBoard(board));
+		return "board/deleteBoard.jsp";
+	}
+	
+	@RequestMapping(value="/deleteBoard.do", method=RequestMethod.POST)
+	public String deleteBoard(BoardVO board) {
+		boardService.deleteBoard(board);
 		return "getBoardList.do";
+	}	
+	
+	@RequestMapping(value="/like.do", method=RequestMethod.GET)
+	public String likeCntBoard(@RequestParam int ubd_no) {
+		boardService.likeCnt(ubd_no);
+		return "selectBoardView.do";
 	}	
 	
 	

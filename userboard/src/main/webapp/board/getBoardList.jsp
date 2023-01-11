@@ -27,12 +27,20 @@
 			<input type="hidden" id="curPage" name="curPage" value="${searchVO.getCurPage()}"> 
 			<input type="hidden" id="rowSizePerPage" name="rowSizePerPage" value="${searchVO.getRowSizePerPage()}">
 	   		<div class="row mt-3 justify-content-center">
+	   			<div class="col-auto">
+					<select class="form-select" id="searchCategory" name="searchCategory">
+				    	<option value="">분류</option>							
+				    	<option value="자랑글">자랑글</option>						
+				    	<option value="자유글">자유글</option>							
+				    	<option value="Q&A">Q&A</option>										
+					</select>
+				</div> 
 		    	<div class="col-auto me-1">
 					<select class="form-select" id="searchType" name="searchType">
 				    	<option value="">검색</option>							
-				    	<option value="title" ${searchVO.getSearchType()=="ubd_subject" ? "selected" : "" }>제목</option>							
-				    	<option value="writer" ${searchVO.getSearchType()=="member_nick" ? "selected" : ""}>작성자</option>						
-				    	<option value="content" ${searchVO.getSearchType()=="ubd_content" ? "selected" : ""}>글내용</option>						
+				    	<option value="ubd_subject" ${searchVO.getSearchType()=="ubd_subject" ? "selected" : "" }>제목</option>							
+				    	<option value="member_nick" ${searchVO.getSearchType()=="member_nick" ? "selected" : ""}>작성자</option>						
+				    	<option value="ubd_content" ${searchVO.getSearchType()=="ubd_content" ? "selected" : ""}>글내용</option>						
 					</select>
 				</div>
 				<div class="col-3 me-1">			
@@ -53,22 +61,16 @@
 						<th scope="col" class="col-6">제목</th>
 						<th scope="col" class="col-1 text-center">작성자</th>
 						<th scope="col" class="col-1 text-center">등록일</th>
-						<th scope="col" class="col-1 text-center">조회수</th>			
-						<th scope="col" class="col text-center">파일</th>							
+						<th scope="col" class="col-1 text-center">조회수</th>									
 					</thead>
 					<tbody>
 					<c:forEach  var="board" items="${ boardList }">
 						<tr>
 							<td>${ board.getUbd_no()}</td>
-							<td><a href="updateBoard.do?ubd_no=${board.getUbd_no()}">${board.getUbd_subject()}</a></td>
+							<td><a href="selectBoardView.do?ubd_no=${board.getUbd_no()}">${board.getUbd_subject()}</a></td>
 							<td>${ board.getMember_nick() }</td>
 							<td><fmt:formatDate value="${board.ubd_regdate}" pattern="yyyy-MM-dd"/></td>
 							<td>${ board.ubd_readcount }</td>
-							<td align="center">
-							<c:if test="${!empty board.ubd_file}">
-								<a href="download.do?ubd_no=${board.getUbd_no()}&fn=${board.ubd_file}" class="btn btn-success btn-sm"><i class="fas fa-file-download">${board.ubd_file}</i></a>
-							</c:if>
-							</td>
 						</tr>
 					</c:forEach>									
 					</tbody>

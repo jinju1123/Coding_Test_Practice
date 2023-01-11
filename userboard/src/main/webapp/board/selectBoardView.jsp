@@ -15,34 +15,45 @@
 <body>
 	<div class="container"  align="center">
 		<div class="mt-4 p-5 bg-primary text-white rounded">
-			<h3>게시글 수정</h3>		
+			<h3>게시글 상세보기</h3>		
 		</div>
 	</div>		
 
 	<div class="container mt-3" align="center">
-		<form action="updateBoard.do" method="post">
-			<input name="ubd_no" type="hidden" value="${board.ubd_no}" />
-			<div class="input-group mb-3">
-  			 <b>글제목</b> <input type="text" class="form-control" name="ubd_subject" value="${ board.ubd_subject }">
-			</div>
-			<div class="input-group mb-3">
-			 <b>견종 들어갈 칸</b>
-			</div>
-			<div class="input-group mb-3">
-			 <b>작성자</b> <input type="text" class="form-control"  name="member_nick" value="${ board.getMember_nick() }" readonly> 
-			</div>
-			<div class="input-group mb-3">
-			  <b>글내용</b> <textarea class="form-control"  name="ubd_content" rows="15" >${ board.ubd_content }</textarea>
-			</div>	
-			
+
+			<table>
+						<tr>
+						<th>제목(추천 ${ board.getUbd_like_cnt()} )</th>
+						<td>${ board.getUbd_subject() }</td>
+						</tr>
+						<tr>
+						<th>작성자</th>
+						<td>${ board.getMember_nick() }</td>
+						</tr>
+						<tr>
+						<th>내용</th>
+						<td>${ board.getUbd_content() }</td>
+						</tr>
+						<tr>
+						<th>등록일</th>
+						<td>${ board.getUbd_regdate() }</td>
+						</tr>
+						<tr>
+						<th>조회수</th>
+						<td>${ board.ubd_readcount }</td>
+						</tr>								
+			</table>
+
+			<a href="like.do?ubd_no=${ board.getUbd_no() }">추천</a>
 			
 			<div class="container" align="center">
-				<input type="submit" class="btn btn-primary mt-3" value="수정완료"/>
-				<input type="button" class="btn btn-primary mt-3" value="취소" onclick="location.href='getBoardList.do'"/>
+				<a href="updateBoard.do?ubd_no=${board.getUbd_no()}" class="btn btn-warning mt-3">게시글수정</a>
+				<a href="getBoardList.do" class="btn btn-primary mt-3">게시글목록</a>			
+				<a href="deleteBoard.do?ubd_no=${board.getUbd_no()}" class="btn btn-danger mt-3">게시글삭제</a>
 			</div>
-		</form>			
+		
 	</div>
-
+	
 	<script>
 		function deleteBoard() {
 			if(confirm("자료를 삭제하겠습니까?")) {

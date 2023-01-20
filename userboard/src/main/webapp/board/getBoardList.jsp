@@ -16,7 +16,7 @@
 <body>
 	<div class="container" align="center">
 		<div class="mt-4 p-5 bg-primary text-white rounded">
-			<h3>글목록</h3>
+			<h3>유저 커뮤니티</h3>
 			<c:if test="${ boardList.isEmpty() }">
 				<h5><p class="bg-danger text-white">등록된 게시판 정보가 존재하지 않습니다!!</p></h5>
 			</c:if>
@@ -28,8 +28,13 @@
 			<input type="hidden" id="rowSizePerPage" name="rowSizePerPage" value="${searchVO.getRowSizePerPage()}">
 	   		<div class="row mt-3 justify-content-center">
 	   			<div class="col-auto">
+					<a href="#">전체글</a> ㅣ
+	   				<a href="">인기글</a> ㅣ
+	   				<a href="">펫시터 커뮤니티</a>
+	   			</div>
+	   			<div class="col-auto">
 					<select class="form-select" id="searchCategory" name="searchCategory">
-				    	<option value="">분류</option>							
+				    	<option value="전체글">말머리</option>							
 				    	<option value="자랑글">자랑글</option>						
 				    	<option value="자유글">자유글</option>							
 				    	<option value="Q&A">Q&A</option>										
@@ -46,9 +51,8 @@
 				<div class="col-3 me-1">			
 					<input class="form-control me-2" name="searchWord" type="text" placeholder="input search keyword..." />
 				</div>
-				<div class="col-5 btn-group">
+				<div class="col-3 btn-group">
 			    	<input type="submit" class="col-1 btn btn-primary me-2" value="검색">
-			    	<a href="board/insertBoard.jsp" class="col-1 btn btn-primary me-2">글등록</a>
 	        	</div>
 			</div>
 		</form> <!-- getBoardList.do -->
@@ -120,26 +124,19 @@
 			</div> <!-- rowSizePerPage -->   	
 		</div> <!-- 페이징 -->
 		
+		<div class="col-2 btn-group">
+			    <a href="board/insertBoard.jsp" class="col-1 btn btn-primary me-2">글등록</a>
+		</div>					
 	</div> <!-- main  -->
-							
+	
 	<script>
 		$(function() {
-			
 			// 목록 갯수 변경
 			$('#rowPerPage').change(function(e) {
 				$('#curPage').val(1);
 				$('#rowSizePerPage').val($(this).val());
 				$('#boardForm').submit();
-			});	//#rowPerPage
-			
-			// 초기화 버튼 클릭
-			$('#btnReset').click(function() {
-				$('#curPage').val(1);
-				$('#boardForm').find("select[name='searchCategory'] option:eq(0)").attr("selected", "selected");
-				$('#boardForm').find("select[name='searchType'] option:eq(0)").attr("selected", "selected");
-				$('#boardForm').find("input[name='searchWord']").val("");
-				$('#boardForm').submit();
-			}); // #id_btn_reset.cli			
+			});	//#rowPerPage		
 			
 		})
 	</script>

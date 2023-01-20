@@ -16,7 +16,7 @@
   <div class="container" align="center">
 		<div class="mt-4 p-5 bg-primary text-white rounded">
 			<h3>게시글 삭제</h3>
-			
+		
 		</div>
 		<br>
 		

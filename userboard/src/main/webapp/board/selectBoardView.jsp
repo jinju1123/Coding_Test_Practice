@@ -48,15 +48,15 @@
 			
 			<div class="container" align="center">
 				<a href="updateBoard.do?ubd_no=${board.getUbd_no()}" class="btn btn-warning mt-3">게시글수정</a>
-				<a href="getBoardList.do" class="btn btn-primary mt-3">게시글목록</a>			
-				<a href="deleteBoard.do?ubd_no=${board.getUbd_no()}" class="btn btn-danger mt-3">게시글삭제</a>
+				<a href="getBoardList.do" class="btn btn-primary mt-3">게시글목록</a>	
+				<a href="#" onclick="deleteBoard()" class="btn btn-danger mt-3">게시글삭제</a>
 			</div>
 		
 	</div>
 	
 	<script>
 		function deleteBoard() {
-			if(confirm("자료를 삭제하겠습니까?")) {
+			if(confirm("이 게시글을 삭제하겠습니까?")) {
 		    	self.location.href = "deleteBoard.do?ubd_no=${ board.ubd_no }";
 		    }
 		}

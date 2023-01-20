@@ -2,6 +2,7 @@ package com.lec.board.service;
 
 import java.util.List;
 
+
 import com.lec.board.common.SearchVO;
 import com.lec.board.vo.BoardVO;
 

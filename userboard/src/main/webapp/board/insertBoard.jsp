@@ -15,8 +15,7 @@
 <body>
 	<div class="container" align="center">
 		<div class="mt-4 p-5 bg-primary text-white rounded">
-			<h3>글등록</h3>
-			<p>상세설명.................</p>
+			<h3>게시글 등록</h3>
 		</div>
 	</div>
 	

@@ -3,6 +3,7 @@ package com.lec.board.vo;
 import java.util.Date;
 
 
+
 import org.springframework.web.multipart.MultipartFile;
 
 public class BoardVO {
@@ -17,6 +18,7 @@ public class BoardVO {
 	private Date ubd_regdate;
 	private int ubd_like_cnt;
 	private String ubd_file; 
+	private String ubd_category;
 	private MultipartFile uploadFile;
 	
 	
@@ -88,6 +90,14 @@ public class BoardVO {
 	public void setUploadFile(MultipartFile uploadFile) {
 		this.uploadFile = uploadFile;
 	}
+	
+	public String getUbd_category() {
+		return ubd_category;
+	}
+	public void setUbd_category(String ubd_category) {
+		this.ubd_category = ubd_category;
+	}
+	
 	@Override
 	public String toString() {
 		return "[member_no=" + member_no + ", member_nick=" + member_nick + ", ubd_no=" + ubd_no

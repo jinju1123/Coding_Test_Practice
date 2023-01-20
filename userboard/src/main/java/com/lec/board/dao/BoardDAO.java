@@ -31,7 +31,7 @@ public class BoardDAO {
 	private String selectBoardListByMemberNick = "select * from bdtest where 1=1 and member_nick like ? order by ubd_no desc limit ?, ?";
 	private String selectBoardListByUbdContent = "select * from bdtest where 1=1 and ubd_content like ? order by ubd_no desc limit ?, ?";
 	private String boardTotalRowCount = "select count(*) from bdtest where 1=1";
-	private String insertBoard = "insert into bdtest(ubd_dogType, ubd_subject, ubd_content, ubd_regdate, ubd_file) values(?, ?, ?, now(), ?)";
+	private String insertBoard = "insert into bdtest(ubd_dogType, ubd_subject, ubd_content, ubd_regdate, ubd_file, ubd_category) values(?, ?, ?, now(), ?, 'C1')";
 	private String updateCount = "update bdtest set ubd_readcount = ubd_readcount + 1 where ubd_no=?";
 	private String updateBoard = "update bdtest set ubd_subject=?, ubd_content=? where ubd_no=?";
 	private String deleteBoard = "delete from bdtest where ubd_no=?";

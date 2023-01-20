@@ -1,8 +1,11 @@
 package com.lec.controller;
 
 import java.io.File;
+
 import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
@@ -64,15 +67,17 @@ public class BoardController {
 		}	
 		boardService.insertBoard(board);
 		model.addAttribute("msg","글이 정상적으로 등록되었습니다.");
-		model.addAttribute("url","getBoardList.do"); // ------------------------------------- 여기 에러
+		model.addAttribute("url","../getBoardList.do"); // 
 		return "redirect_insert.jsp";
 	}	
 	
 	@RequestMapping(value="/selectBoardView.do", method=RequestMethod.GET)
-	public String selectBoardView(Model model, BoardVO board, SearchVO searchVO, @RequestParam int ubd_no) {
+	public String selectBoardView(Model model, BoardVO board, SearchVO searchVO, @RequestParam int ubd_no, HttpServletRequest req) {
 		model.addAttribute("searchVO", searchVO);
 		model.addAttribute("board", boardService.getBoard(board));
-		boardService.updateCount(ubd_no);
+		if(req.getAttribute("updateCount_is")==null) {
+			boardService.updateCount(ubd_no);
+		}
 		return "board/selectBoardView.jsp";
 	}
 	
@@ -93,23 +98,24 @@ public class BoardController {
 	}	
 	
 	
-	@RequestMapping(value="/deleteBoard.do", method=RequestMethod.GET)
-	public String deleteBoard(Model model, BoardVO board, SearchVO searchVO, @RequestParam int ubd_no) {
-		board.setUbd_no(ubd_no);
-		model.addAttribute("searchVO", searchVO);
-		model.addAttribute("board", boardService.getBoard(board));
-		return "board/deleteBoard.jsp";
-	}
+//	@RequestMapping(value="/deleteBoard.do", method=RequestMethod.GET)
+//	public String deleteBoard(Model model, BoardVO board, SearchVO searchVO, @RequestParam int ubd_no) {
+//		board.setUbd_no(ubd_no);
+//		model.addAttribute("searchVO", searchVO);
+//		model.addAttribute("board", boardService.getBoard(board));
+//		return "board/deleteBoard.jsp";
+//	}
 	
-	@RequestMapping(value="/deleteBoard.do", method=RequestMethod.POST)
+	@RequestMapping(value="/deleteBoard.do", method=RequestMethod.GET)
 	public String deleteBoard(BoardVO board) {
 		boardService.deleteBoard(board);
 		return "getBoardList.do";
 	}	
 	
 	@RequestMapping(value="/like.do", method=RequestMethod.GET)
-	public String likeCntBoard(@RequestParam int ubd_no) {
-		boardService.likeCnt(ubd_no);
+	public String likeCntBoard(@RequestParam int ubd_no, HttpServletRequest req) {
+		boardService.likeCnt(ubd_no);	
+		req.setAttribute("updateCount_is", 5);
 		return "selectBoardView.do";
 	}	
 	

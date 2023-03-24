@@ -7,5 +7,9 @@ class Solution {
             } 
         }
         return answer;
+        // 향상된 for문을 사용하면 더 간단해진다.
+        // for(int i : array) {
+        //    if(i > height) answer++;
+        // }
     }
 }

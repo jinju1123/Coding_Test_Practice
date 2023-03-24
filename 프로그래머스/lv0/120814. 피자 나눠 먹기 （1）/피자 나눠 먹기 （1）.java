@@ -8,4 +8,7 @@ class Solution {
         }
         return answer;
     }
+    
+    // 짧게 삼항연산자 사용하기
+    // return n % 7 == 0 ? n/7 : n/7 + 1;
 }

@@ -8,9 +8,13 @@ class Solution {
         int num1 = numbers[0] * numbers[1];
         int num2 = numbers[numbers.length-1] * numbers[numbers.length-2];
         
-        if(num1 > num2) {
-            return num1;
-        } else
-            return num2;
+        // if(num1 > num2) {
+        //     return num1;
+        // } else
+        //     return num2;
+        
+        // Math.max 함수 쓰면 간단! 두 개중 큰 값 구하기
+        
+        return Math.max(num1, num2);
     }
 }

@@ -2,9 +2,9 @@ class Solution {
     public int solution(int n) {
         int answer = 0;
         
-        for(int i=1; i<=1000; i++){
-            if((n*i)%6==0){
-                answer = (n*i)/6;
+        for(int i=1; i<=n; i++){
+            if(i * 6 % n == 0){
+                answer = i;
                 break;
             }
         }

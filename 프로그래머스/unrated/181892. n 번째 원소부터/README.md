@@ -1,10 +1,10 @@
 # [unrated] n 번째 원소부터 - 181892 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181892) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181892?language=java) 
 
 ### 성능 요약
 
-메모리: 77.3 MB, 시간: 0.01 ms
+메모리: 76.8 MB, 시간: 0.01 ms
 
 ### 구분
 

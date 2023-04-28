@@ -1,10 +1,10 @@
 # [unrated] 0 떼기 - 181847 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181847) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181847?language=java) 
 
 ### 성능 요약
 
-메모리: 71 MB, 시간: 0.02 ms
+메모리: 75.5 MB, 시간: 5.41 ms
 
 ### 구분
 

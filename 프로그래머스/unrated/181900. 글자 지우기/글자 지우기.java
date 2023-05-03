@@ -4,8 +4,7 @@ class Solution {
         for(int i=0; i<indices.length; i++){
             str[indices[i]] = "";
         }
-        String answer = String.join("", str);
         
-        return answer.replaceAll(" ", "");
+        return String.join("", str);
     }
 }

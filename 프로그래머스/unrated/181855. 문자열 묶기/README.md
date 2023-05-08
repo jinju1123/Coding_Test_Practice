@@ -1,10 +1,10 @@
 # [unrated] 문자열 묶기 - 181855 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181855) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181855?language=java) 
 
 ### 성능 요약
 
-메모리: 121 MB, 시간: 5.99 ms
+메모리: 139 MB, 시간: 6.90 ms
 
 ### 구분
 

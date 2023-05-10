@@ -28,5 +28,13 @@ class Solution {
         }
         
         return list.stream().mapToInt(i->i).toArray();
+        
+        // 다른 사람 풀이 중에 Arrays.copyOfRange도 좋은 풀이같다.
+        // if(n ==1)
+        //     return Arrays.copyOfRange(num_list, 0, b+1);
+        // if(n==2)
+        //     return Arrays.copyOfRange(num_list, a, num_list.length);
+        // if(n==3)
+        //     return Arrays.copyOfRange(num_list, a, b+1);
     }
 }

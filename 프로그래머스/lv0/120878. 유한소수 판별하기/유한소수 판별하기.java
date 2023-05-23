@@ -4,7 +4,6 @@ class Solution {
     public int solution(int a, int b) {
         
         // 최대 공약수 구하기
-        int num = 0; //(최대 공약수 넣을 변수)
         int aa = Math.max(a, b);
         int bb = Math.min(a, b);
           while(bb!=0){

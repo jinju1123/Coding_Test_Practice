@@ -19,17 +19,17 @@ class Solution {
             }
         }
         
-         StringBuilder sb = new StringBuilder();
+//          StringBuilder sb = new StringBuilder();
         
-         sb.append(String.valueOf(min));
-         sb.append(" ");
-         sb.append(String.valueOf(max));
+//          sb.append(String.valueOf(min));
+//          sb.append(" ");
+//          sb.append(String.valueOf(max));
             
         
         // 이건 간단하지만 성능이 안좋음
-        // String answer = ""+String.valueOf(min)+" "+String.valueOf(max);
-        // return answer;
+        String answer = min+" "+max;
+        return answer;
         
-        return sb.toString();
+        //return sb.toString();
     }
 }

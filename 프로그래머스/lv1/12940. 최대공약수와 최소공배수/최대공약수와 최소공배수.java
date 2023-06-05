@@ -14,8 +14,8 @@ class Solution {
         }
         di = a;
         
-        // 최대공배수 구하기 : a x b / 최대공약수
-        int mul = (n * m) / di;
+        // 최소공배수 구하기 : (a x b)/최대공약수
+        int mul = n * m / di;
         
         int[] answer = {di, mul};
         

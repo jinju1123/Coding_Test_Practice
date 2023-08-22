@@ -3,14 +3,10 @@ class Solution {
 
         int sum = 0;
         
-        for(int i=0; i<=9; i++){
+        for(int i : numbers) {
             sum += i;
         }
         
-        for(int n : numbers){
-            sum -= n;
-        }
-        
-        return sum;
+        return 45 - sum;
     }
 }

@@ -20,8 +20,15 @@ class Solution {
         // return String.valueOf(ch);
         
         // 풀이 4 : 정규식은 대단해
-        return phone_number.replaceAll(".(?=.{4})", "*");
+        // return phone_number.replaceAll(".(?=.{4})", "*");
         
+        char[] ch = phone_number.toCharArray();
+        
+        for(int i=0; i<ch.length-4; i++) {
+            ch[i] = '*';
+        }
+        
+        return String.valueOf(ch);
         
     }
 }

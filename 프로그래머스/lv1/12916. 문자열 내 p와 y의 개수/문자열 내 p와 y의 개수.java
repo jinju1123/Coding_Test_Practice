@@ -3,13 +3,11 @@ class Solution {
         
         int p = 0;
         int y = 0;
-
-        s = s.toLowerCase();
         
-        for(char c : s.toCharArray()) {
+        for(char c : s.toLowerCase().toCharArray()) {
             if(c == 'p') {
                 p++;
-            } else if( c == 'y') {
+            } else if(c == 'y') {
                 y++;
             }
         }

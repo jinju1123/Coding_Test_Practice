@@ -3,12 +3,12 @@ class Solution {
         
         int sum = 0;
         
-        String[] strArr = String.valueOf(x).split("");
+        String s = String.valueOf(x);
         
-        for(int i=0; i<strArr.length; i++){
-            sum += Integer.parseInt(strArr[i]);
+        for(char c : s.toCharArray()) {
+            sum += c - '0';
         }
         
-        return x%sum==0 ? true : false;
+        return x % sum == 0 ? true : false;
     }
 }

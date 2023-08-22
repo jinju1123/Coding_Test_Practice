@@ -3,11 +3,11 @@ class Solution {
         
         long answer = 0;
         
-        int x = Math.min(a, b);
-        int y = Math.max(a, b);
+        int max = Math.max(a, b);
+        int min = Math.min(a, b);
         
-        for(int i=x; x<=y; x++){
-            answer += x;
+        for(int i=min; i<=max; i++){
+            answer += i;
         }
         
         return answer;

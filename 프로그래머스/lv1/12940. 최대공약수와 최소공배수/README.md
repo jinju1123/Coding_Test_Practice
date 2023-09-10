@@ -1,10 +1,10 @@
 # [level 1] 최대공약수와 최소공배수 - 12940 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/12940?language=java) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/12940) 
 
 ### 성능 요약
 
-메모리: 73.9 MB, 시간: 0.03 ms
+메모리: 75.2 MB, 시간: 0.03 ms
 
 ### 구분
 

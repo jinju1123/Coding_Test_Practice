@@ -1,24 +1,18 @@
 class Solution {
-    public int[] solution(int n, int m) { 
-        
-        // 최대공약수 구하기 : 유클리드 호제법
-        int di = 0;
+    public int[] solution(int n, int m) {
         
         int a = Math.max(n,m);
         int b = Math.min(n,m);
         
-        while(b!=0){
-            int r = a%b;
+        while(b!=0) {
+            int r = a % b;
             a = b;
             b = r;
         }
-        di = a;
         
-        // 최소공배수 구하기 : (a x b)/최대공약수
-        int mul = n * m / di;
+        int mul = n*m / a;
         
-        int[] answer = {di, mul};
-        
+        int[] answer = {a, mul};
         return answer;
     }
 }
